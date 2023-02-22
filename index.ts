@@ -3,6 +3,10 @@ import { static as eStatic, json } from "express"
 import "express-async-errors"
 import { engine } from "express-handlebars"
 import * as methodOverride from "method-override"
+import { bullringRouter } from "./routers/bullring"
+import { hallOfFameRouter } from "./routers/hall-of-fame"
+import { homeRouter } from "./routers/home"
+import { warriorRouter } from "./routers/warrior"
 
 
 const app = express()
@@ -20,9 +24,10 @@ app.engine('.hbs', engine({
 }))
 app.set('view engine', '.hbs')
 
-app.get('/', (req, res) => {
-    res.send('Dziala!')
-})
+app.use('/', homeRouter)
+app.use('/warrior', warriorRouter)
+app.use('/bullring', bullringRouter)
+app.use('/hall-of-fame', hallOfFameRouter)
 
 // TO DO : chat errors
 

@@ -4,8 +4,8 @@ export const bullringRouter = Router()
 
 bullringRouter
     .get('/fight-form', (_, res) => {
-        res.send('Fight warrior :-)')
+        res.render('bullring/fight-form')
     })
     .post('/fight', (req, res) => {
-        res.send('Fight! fight!')
+        res.render('bullring/fight')
     })

@@ -4,8 +4,8 @@ export const warriorRouter = Router()
 
 warriorRouter
     .get('/add-form', (_, res) => {
-        res.send('Dziala! warrior')
+        res.render('warrior/add-form')
     })
     .post('/', (req, res) => {
-        res.send('Adding a warrior')
+        res.send('warrior/added')
     })

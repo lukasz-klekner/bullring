@@ -1,4 +1,6 @@
 <h2>Select warriors to battle</h2>
-<form action="">
-    
+<form action="/bullring/fight" method="post">
+    {{> warrior-select select-name="warrior1"}}
+    {{> warrior-select select-name="warrior2"}}
+    <button type="submit">Start a battle!</button>
 </form>

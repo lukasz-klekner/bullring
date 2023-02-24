@@ -42,7 +42,7 @@ export const fight = (warrior1: WarriorRecord, warrior2: WarriorRecord): {
         }
 
         [defender, attacker] = [attacker, defender]
-    } while (defender.hp > 0)
+    } while (attacker.hp > 0)
 
     const winner = defender.warrior
     logs.push(`${winner.name} wins!!!`)

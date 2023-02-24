@@ -1,4 +1,25 @@
 <h2>Hall of fame</h2>
 <table>
-    ...
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Number of wins</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each warriors}}
+            <tr>
+                <th>
+                    {{this.place}}
+                </th>
+                <td>
+                    {{this.wins}}
+                </td>
+                <td>
+                    {{this.name}}
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
 </table>

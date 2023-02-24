@@ -57,4 +57,29 @@ export class WarriorRecord {
         return this._id.toString()
     } 
 
+    async update(){
+        await warriorCollection.updateOne({
+            _id: this._id,
+        }, {
+            ...this,
+            wins: this.wins
+        })
+    }   
+    
+    static async findOne(id: string): Promise<WarriorRecord | null>{
+        const result = await warriorCollection.findOne({
+            _id: new ObjectId(id)
+        }) as WarriorSchema
+
+        return result === null ? null : new WarriorRecord(result)
+    }
+
+    static async listAll(){
+        return (await warriorCollection.find().toArray() as WarriorRecord[]).map(obj => new WarriorRecord(obj))
+    }
+
+    static async listTop(topCounter: number){
+        return (await warriorCollection.find().sort({ wins: -1 }).toArray() as WarriorRecord[]).splice(0, topCounter).map(obj => new WarriorRecord(obj))
+    }
+
 }

@@ -1,4 +1,39 @@
 <h2>Register a warrior!</h2>
-<form action="">
+<form action="/warrior" method="post">
+    <p>
+        <label>
+            Name:
+            <input name="name" minlength="3" maxlength="50">
+        </label>
+    </p>
 
+    <p>
+        <label>
+            Power:
+            <input type="number" name="power" min="1" step="1" max="10">
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Defence:
+            <input type="number" name="defence" min="1" step="1" max="10">
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Strength:
+            <input type="number" name="strength" min="1" step="1" max="10">
+        </label>
+    </p>
+
+    <p>
+        <label>
+            Agility:
+            <input type="number" name="agility" min="1" step="1" max="10">
+        </label>
+    </p>
+
+    <button type="submit">Register your warrior!</button>
 </form>

@@ -3,12 +3,12 @@ import { static as eStatic, json } from "express"
 import "express-async-errors"
 import { engine } from "express-handlebars"
 import * as methodOverride from "method-override"
-import { WarriorRecord } from "./records/Warrior"
 import { bullringRouter } from "./routers/bullring"
 import { hallOfFameRouter } from "./routers/hall-of-fame"
 import { homeRouter } from "./routers/home"
 import { warriorRouter } from "./routers/warrior"
-
+import { handleError } from "./utils/errors"
+import "./utils/db"
 
 const app = express()
 
@@ -31,6 +31,7 @@ app.use('/bullring', bullringRouter)
 app.use('/hall-of-fame', hallOfFameRouter)
 
 // TO DO : catch errors
+app.use(handleError)
 
 app.listen(3000, 'localhost', () => {
     console.log('listening on http://localhost')

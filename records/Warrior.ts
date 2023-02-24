@@ -82,4 +82,11 @@ export class WarriorRecord {
         return (await warriorCollection.find().sort({ wins: -1 }).toArray() as WarriorRecord[]).splice(0, topCounter).map(obj => new WarriorRecord(obj))
     }
 
+    static async isNameUsed(name: string){
+        const result = await warriorCollection.findOne({
+            name
+        }) as WarriorSchema
+
+        return result !== null
+    }
 }

@@ -58,7 +58,7 @@ export class WarriorRecord {
     } 
 
     async update(){
-        await warriorCollection.updateOne({
+        await warriorCollection.replaceOne({
             _id: this._id,
         }, {
             ...this,

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { WarriorRecord } from "../records/Warrior";
 import { ValidationError } from "../utils/errors";
+import { fight } from "../utils/fight";
 
 export const bullringRouter = Router()
 
@@ -22,13 +23,20 @@ bullringRouter
         const warrior1 = await WarriorRecord.findOne(warrior1Id)
         const warrior2 = await WarriorRecord.findOne(warrior2Id)
 
-        if(warrior1){
+        if(!warrior1.name){
             throw new ValidationError('The warrior1 does not exist')
         }
 
-        if(warrior2){
+        if(!warrior2.name){
             throw new ValidationError('The warrior2 does not exist')
         }
 
-         res.render('bullring/fight')
+        const { logs, winner } = fight(warrior1, warrior2)
+
+        winner.wins++
+        winner.update()
+
+        res.render('bullring/fight', {
+            logs
+        })
     })
